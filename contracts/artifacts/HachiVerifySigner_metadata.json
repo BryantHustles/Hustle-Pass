@@ -1,0 +1,83 @@
+{
+	"compiler": {
+		"version": "0.8.14+commit.80d49f37"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/HACHIVerifySigner.sol": "HachiVerifySigner"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/Strings.sol": {
+			"keccak256": "0x32c202bd28995dd20c4347b7c6467a6d3241c74c8ad3edcbb610cd9205916c45",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8179c356adb19e70d6b31a1eedc8c5c7f0c00e669e2540f4099e3844c6074d30",
+				"dweb:/ipfs/QmWFbivarEobbqhS1go64ootVuHfVohBseerYy9FTEd1W2"
+			]
+		},
+		"@openzeppelin/contracts/utils/cryptography/ECDSA.sol": {
+			"keccak256": "0x3c07f43e60e099b3b157243b3152722e73b80eeb7985c2cd73712828d7f7da29",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://466ffb5a6e3bd65fffd996f9287ffd240ea21588a338c6efe143d94eaed014a7",
+				"dweb:/ipfs/Qmans3vvPJZcvxe9KLAPc9Xwe4TFVTJdzaQGpi62Vrhoe2"
+			]
+		},
+		"@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol": {
+			"keccak256": "0x6688fad58b9ec0286d40fa957152e575d5d8bd4c3aa80985efdb11b44f776ae7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8bc00ab7f133cdaafd212a5cc6a16c8d37319721105d130c8e5af0c4e8f170ba",
+				"dweb:/ipfs/QmVmf6LVMfFiEkvKYLzSv3bGHzymEW93AcUuFrNUdY3NtT"
+			]
+		},
+		"contracts/HACHILibrary.sol": {
+			"keccak256": "0xad06a7b07635bfb8031f4b7895bcfc33583bb2d8dcc68686ee783cbc734d5dc2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fc4281815e2b977f701aa48bd231f932ee33b13b6efb6bff28b790b0b415677c",
+				"dweb:/ipfs/QmaqwekrAcdAq9e5Jz6Cfx3L9eqqiq3jG6Lo78eZR3UrDB"
+			]
+		},
+		"contracts/HACHIVerifySigner.sol": {
+			"keccak256": "0xe0c9cdcdc43c2e2fa78905a45436392a564a7e69ffe91793ebb83cb5c3856e7f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://83f4586f192724c87ff4262df56f2963218c144b172177d686d3448c00d609dc",
+				"dweb:/ipfs/Qmehg5vJADg7MnaSoYgYms3YDRQRZnHvximwM6GRoTosYQ"
+			]
+		}
+	},
+	"version": 1
+}

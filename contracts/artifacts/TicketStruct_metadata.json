@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.14+commit.80d49f37"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TicketStruct.sol": "TicketStruct"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/TicketStruct.sol": {
+			"keccak256": "0x6ca9d7431b7f2bf0e04fc744a44cffae61a49f4eb763b1f9badd1330f7f234fb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bb0b5c9cf87e42a5cc0b8ef8c318679a824cba57a676a64db0423ea9d28354fd",
+				"dweb:/ipfs/QmPnY3e67f8mY3p1YdrbRtbufbxsvAEtKc1ikB4HjZpoRE"
+			]
+		}
+	},
+	"version": 1
+}
