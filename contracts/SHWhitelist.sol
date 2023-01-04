@@ -5,7 +5,7 @@ pragma solidity ^0.8.11;
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract HachiWhitelist is Ownable {
+contract SHWhitelist is Ownable {
     bytes32 public merkleRoot;
 
     constructor(bytes32 _merkleRoot) {
