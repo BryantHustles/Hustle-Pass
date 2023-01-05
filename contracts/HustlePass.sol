@@ -30,17 +30,15 @@ contract HUSTLEPASS is
 
     bool public publicMint;
 
-    uint256 public mintLimit = 500;
-    uint256 private tokenIndex = 0;
+    uint256 public mintLimit = 100;
     uint256 private SHPassACount = 0;
     uint256 private SHPassBCount = 0;
 
-    mapping(uint256 => uint256) private control;
     mapping(address => bool) private addressMinted;
 
-    struct HachiTicket {
+    struct mintTicket {
         address to;
-        uint256[] amounts;
+        uint256 passSelection; // 1 or 2
         bytes32[] merkleProof;
         bytes signature;
     }
@@ -48,17 +46,17 @@ contract HUSTLEPASS is
     SHWhitelist whtlst;
     SHWallet wllt;
 
-    event Mint(address indexed to, uint256[] indexed id, uint256 _value);
+    event Mint(address indexed to, uint256 indexed id, uint256 _value);
 
     constructor(
-        string memory _ipfs,
+        string memory _uri,
         string memory _SIGNING_DOMAIN,
         string memory _SIGNATURE_VERSION,
         string memory _contractURI,
         SHWhitelist _whtlst,
         SHWallet _wllt
     ) 
-        ERC1155(_ipfs) 
+        ERC1155(_uri) 
         EIP712(_SIGNING_DOMAIN, _SIGNATURE_VERSION) {
         contractURI = _contractURI;
         whtlst = _whtlst;
@@ -77,7 +75,6 @@ contract HUSTLEPASS is
         override
         returns (string memory)
     {
-
         return (
             string(
                 abi.encodePacked(
@@ -96,7 +93,7 @@ contract HUSTLEPASS is
         contractURI = _contractURI;
     }
 
-    function mintPass(HachiTicket calldata _ticket)
+    function mintPass(mintTicket calldata _ticket)
         public
         payable
         whenNotPaused
@@ -104,36 +101,31 @@ contract HUSTLEPASS is
     {
         address _signer = verifySigner(_ticket);
         require(msg.sender == _signer, "Verification Failed");
-        uint256 _length = _ticket.amounts.length;
-        require(_length > 0, "Invalid Amounts Input");
-        uint256[] memory _tokenId = _ticket.amounts;
+        require(_ticket.passSelection == 1 || _ticket.passSelection == 2, "Invalid Pass Selection (1 or 2 only).");
+        require(addressMinted[_signer] == false,"Address Already Minted");
 
-        require(tokenIndex + _length <= mintLimit, "Sold Out");
         if (!publicMint) {
-            require(
-                whtlst.verifyWhitelist(_ticket.merkleProof, _signer),
-                "Not Whitelisted"
-            );
-        }
-        require(
-            addressMinted[_signer] == false,
-            "Address Already Minted"
-        );
-        for (uint256 i = 0; i < _length; i++) {
-            require(_ticket.amounts[i] == 1, "Invalid amounts array");
-            tokenIndex++;
-            _tokenId[i] = tokenIndex;
+            require(whtlst.verifyWhitelist(_ticket.merkleProof, _signer),"Not Whitelisted");
         }
 
-        emit Mint(_ticket.to, _tokenId, msg.value);
+        if (_ticket.passSelection == 1) {
+            require(SHPassACount + 1 <= mintLimit, "Pass A Sold Out");
+            SHPassACount += 1;
+        } else {
+            require(SHPassBCount + 1 <= mintLimit, "Pass B Sold Out");
+            SHPassBCount += 1;
+        }
+
+        emit Mint(_ticket.to, _ticket.passSelection, msg.value);
+
         addressMinted[_signer] = true;
 
-        _mintBatch(_ticket.to, _tokenId, _ticket.amounts, "");
+        _mint(_ticket.to, _ticket.passSelection, 1, "");
 
-        payable(wllt).transfer(msg.value);
+        payable(_signer).transfer(msg.value);
     }
 
-    function verifySigner(HachiTicket calldata _ticket)
+    function verifySigner(mintTicket calldata _ticket)
         internal
         view
         returns (address)
@@ -142,7 +134,7 @@ contract HUSTLEPASS is
         return ECDSA.recover(digest, _ticket.signature);
     }
 
-    function _hash(HachiTicket calldata _ticket)
+    function _hash(mintTicket calldata _ticket)
         internal
         view
         returns (bytes32)
@@ -152,10 +144,10 @@ contract HUSTLEPASS is
                 keccak256(
                     abi.encode(
                         keccak256(
-                            "HachiTicket(address to,uint256[] amounts,bytes32[] merkleProof)"
+                            "mintTicket(address to,uint256 passSelection,bytes32[] merkleProof)"
                         ),
                         _ticket.to,
-                        keccak256(abi.encodePacked(_ticket.amounts)),
+                        _ticket.passSelection,
                         keccak256(abi.encodePacked(_ticket.merkleProof))
                     )
                 )
