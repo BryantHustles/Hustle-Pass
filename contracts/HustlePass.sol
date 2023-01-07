@@ -95,7 +95,6 @@ contract HUSTLEPASS is
 
     function mintPass(mintTicket calldata _ticket)
         public
-        payable
         whenNotPaused
         nonReentrant
     {
@@ -127,8 +126,6 @@ contract HUSTLEPASS is
         addressMinted[_signer] = true;
 
         _mint(_ticket.to, _ticket.passSelection, 1, "");
-
-        payable(_signer).transfer(msg.value);
     }
 
     function verifySigner(mintTicket calldata _ticket)
