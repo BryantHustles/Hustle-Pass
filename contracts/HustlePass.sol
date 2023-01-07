@@ -57,9 +57,7 @@ contract HUSTLEPASS is
         string memory _contractURI,
         SHWhitelist _whtlst,
         SHWallet _wllt
-    ) 
-        ERC1155(_uri) 
-        EIP712(_SIGNING_DOMAIN, _SIGNATURE_VERSION) {
+    ) ERC1155(_uri) EIP712(_SIGNING_DOMAIN, _SIGNATURE_VERSION) {
         contractURI = _contractURI;
         whtlst = _whtlst;
         wllt = _wllt;
@@ -103,11 +101,17 @@ contract HUSTLEPASS is
     {
         address _signer = verifySigner(_ticket);
         require(msg.sender == _signer, "Verification Failed");
-        require(_ticket.passSelection == 1 || _ticket.passSelection == 2, "Invalid Pass Selection (1 or 2 only).");
-        require(addressMinted[_signer] == false,"Address Already Minted");
+        require(
+            _ticket.passSelection == 1 || _ticket.passSelection == 2,
+            "Invalid Pass Selection (1 or 2 only)."
+        );
+        require(addressMinted[_signer] == false, "Address Already Minted");
 
         if (!publicMint) {
-            require(whtlst.verifyWhitelist(_ticket.merkleProof, _signer),"Not Whitelisted");
+            require(
+                whtlst.verifyWhitelist(_ticket.merkleProof, _signer),
+                "Not Whitelisted"
+            );
         }
 
         if (_ticket.passSelection == 1) {
@@ -156,32 +160,41 @@ contract HUSTLEPASS is
             );
     }
 
-    function ownerClaim()
-        public
-        onlyOwner
-        {
-            require(addressMinted[msg.sender] == false,"Address Already Claimed");
-            require(ownerClaimed< ownerClaimLimit, "None to Claim");
+    function ownerClaim() public onlyOwner {
+        require(addressMinted[msg.sender] == false, "Address Already Claimed");
+        require(ownerClaimed < ownerClaimLimit, "None to Claim");
 
-            addressMinted[msg.sender] = true;
-            ownerClaimed += ownerClaimLimit;
+        addressMinted[msg.sender] = true;
+        ownerClaimed += ownerClaimLimit;
 
-            emit Mint(msg.sender, 1, ownerClaimLimit);
-            _mint(msg.sender, 1, ownerClaimLimit, "");
+        emit Mint(msg.sender, 1, ownerClaimLimit);
+        _mint(msg.sender, 1, ownerClaimLimit, "");
 
-            emit Mint(msg.sender, 2, ownerClaimLimit);
-            _mint(msg.sender, 2, ownerClaimLimit, "");  
-        }   
+        emit Mint(msg.sender, 2, ownerClaimLimit);
+        _mint(msg.sender, 2, ownerClaimLimit, "");
+    }
 
-        function airdrop(address _from, address[] calldata _recipients, uint256[] calldata _passSelection, uint256[] calldata _amounts) 
-        public 
-        onlyOwner
-        {
-            require(_recipients.length == _amounts.length && _recipients.length == _passSelection.length, "Array lengths don't match");
-            for (uint i = 0; i < _recipients.length; i++) {
-                safeTransferFrom(_from, _recipients[i], _passSelection[i], _amounts[i], "");
-            }
+    function airdrop(
+        address _from,
+        address[] calldata _recipients,
+        uint256[] calldata _passSelection,
+        uint256[] calldata _amounts
+    ) public onlyOwner {
+        require(
+            _recipients.length == _amounts.length &&
+                _recipients.length == _passSelection.length,
+            "Array lengths don't match"
+        );
+        for (uint256 i = 0; i < _recipients.length; i++) {
+            safeTransferFrom(
+                _from,
+                _recipients[i],
+                _passSelection[i],
+                _amounts[i],
+                ""
+            );
         }
+    }
 
     function setDefaultRoyalty(address receiver, uint96 feeNumerator)
         public

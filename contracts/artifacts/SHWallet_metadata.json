@@ -507,11 +507,11 @@
 			]
 		},
 		"contracts/SHWallet.sol": {
-			"keccak256": "0x3da239802c28e74689fcceb0bc1a4e736e0790d436085b2adc73a1fbe0fd1f0f",
+			"keccak256": "0x5fda8041100645c6faa30d0e98a731eb679a4f5874e1b1e3004ea2d237719d95",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://604195eff2bd21e059ab0fdec56618a2faca6acca86a4d2cb6feca1972459c5f",
-				"dweb:/ipfs/QmVTox4wHaYYSvaViCQJELDtGdXFbN5fqbV6QfH1T5mpPN"
+				"bzz-raw://9c8295c82b1fce8d527ce6c4f90857749d18b74e1c7ed2820f7115af755f6abf",
+				"dweb:/ipfs/QmXhv6o76JFZeRc7v8kZoejPg52eBbsn4JZN8vyNRrX1MW"
 			]
 		}
 	},

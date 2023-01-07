@@ -16,7 +16,11 @@ contract SHWhitelist is Ownable {
         merkleRoot = _merkleRoot;
     }
 
-    function verifyWhitelist(bytes32[] memory _merkleProof, address _signer) public view returns (bool){
+    function verifyWhitelist(bytes32[] memory _merkleProof, address _signer)
+        public
+        view
+        returns (bool)
+    {
         bytes32 _leaf = keccak256(abi.encodePacked(_signer));
         return MerkleProof.verify(_merkleProof, merkleRoot, _leaf);
     }
