@@ -31,6 +31,8 @@ contract HUSTLEPASS is
     bool public publicMint;
 
     uint256 public mintLimit = 100;
+    uint256 public ownerClaimLimit = 25;
+    uint256 public ownerClaimed = 0;
     uint256 private SHPassACount = 0;
     uint256 private SHPassBCount = 0;
 
@@ -46,7 +48,7 @@ contract HUSTLEPASS is
     SHWhitelist whtlst;
     SHWallet wllt;
 
-    event Mint(address indexed to, uint256 indexed id, uint256 _value);
+    event Mint(address indexed to, uint256 indexed id, uint256 _amount);
 
     constructor(
         string memory _uri,
@@ -116,7 +118,7 @@ contract HUSTLEPASS is
             SHPassBCount += 1;
         }
 
-        emit Mint(_ticket.to, _ticket.passSelection, msg.value);
+        emit Mint(_ticket.to, _ticket.passSelection, 1);
 
         addressMinted[_signer] = true;
 
@@ -153,6 +155,33 @@ contract HUSTLEPASS is
                 )
             );
     }
+
+    function ownerClaim()
+        public
+        onlyOwner
+        {
+            require(addressMinted[msg.sender] == false,"Address Already Claimed");
+            require(ownerClaimed< ownerClaimLimit, "None to Claim");
+
+            addressMinted[msg.sender] = true;
+            ownerClaimed += ownerClaimLimit;
+
+            emit Mint(msg.sender, 1, ownerClaimLimit);
+            _mint(msg.sender, 1, ownerClaimLimit, "");
+
+            emit Mint(msg.sender, 2, ownerClaimLimit);
+            _mint(msg.sender, 2, ownerClaimLimit, "");  
+        }   
+
+        function airdrop(address _from, address[] calldata _recipients, uint256[] calldata _passSelection, uint256[] calldata _amounts) 
+        public 
+        onlyOwner
+        {
+            require(_recipients.length == _amounts.length && _recipients.length == _passSelection.length, "Array lengths don't match");
+            for (uint i = 0; i < _recipients.length; i++) {
+                safeTransferFrom(_from, _recipients[i], _passSelection[i], _amounts[i], "");
+            }
+        }
 
     function setDefaultRoyalty(address receiver, uint96 feeNumerator)
         public
