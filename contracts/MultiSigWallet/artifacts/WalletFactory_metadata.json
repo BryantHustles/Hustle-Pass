@@ -1,0 +1,195 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_implementationAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newWalletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "allowedSigners",
+						"type": "address[]"
+					}
+				],
+				"name": "WalletCreated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "allowedSigners",
+						"type": "address[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "salt",
+						"type": "bytes32"
+					}
+				],
+				"name": "createWallet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "implementationAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MultiSigWallet/WalletFactory.sol": "WalletFactory"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol": {
+			"keccak256": "0xeb373f1fdc7b755c6a750123a9b9e3a8a02c1470042fd6505d875000a80bde0b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0e28648f994abf1d6bc345644a361cc0b7efa544f8bc0c8ec26011fed85a91ec",
+				"dweb:/ipfs/QmVVE7AiRjKaQYYji7TkjmTeVzGpNmms5eoxqTCfvvpj6D"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC1155/utils/ERC1155Receiver.sol": {
+			"keccak256": "0x3dd5e1a66a56f30302108a1da97d677a42b1daa60e503696b2bcbbf3e4c95bcb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0808de0ae4918c664643c885ca7fa6503e8ef2bd75609dfc85152c0128a3422d",
+				"dweb:/ipfs/QmNrhFC1XgBKuuxfahFeiwi1MCdu3FLNpHj2uStgmf4iJj"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+			"keccak256": "0xa82b58eca1ee256be466e536706850163d2ec7821945abd6b4778cfb3bee37da",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6e75cf83beb757b8855791088546b8337e9d4684e169400c20d44a515353b708",
+				"dweb:/ipfs/QmYvPafLfoquiDMEj7CKHtvbgHu7TJNPSVPSCjrtjV8HjV"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0xf96f969e24029d43d0df89e59d365f277021dac62b48e1c1e3ebe0acdd7f1ca1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ec772b45a624be516f1c81970caa8a2e144301e9d0921cbc1a2789fef39a1269",
+				"dweb:/ipfs/QmNyjwxCrGhQMyzLD93oUobJXVe9ceJvRvfXwbEtuxPiEj"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+			"keccak256": "0xd10975de010d89fd1c78dc5e8a9a7e7f496198085c151648f20cba166b32582b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fb0048dee081f6fffa5f74afc3fb328483c2a30504e94a0ddd2a5114d731ec4d",
+				"dweb:/ipfs/QmZptt1nmYoA5SgjwnSgWqgUSDgm4q52Yos3xhnMv3MV43"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+			]
+		},
+		"contracts/MultiSigWallet/CloneFactory.sol": {
+			"keccak256": "0xba66bc576e55235dc91c11df5d3ed2c5392b7855a882ca11483c0445db319463",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://88fc6b3230bd44b85f01f9ee1f046c9900fcf27bb2b67476cdf5c3a2e463206b",
+				"dweb:/ipfs/QmQ3q6M3w9vHHn5ik42Fz5kKTYvgCs1kNU81n5dZy9qxRm"
+			]
+		},
+		"contracts/MultiSigWallet/ERC20Interface.sol": {
+			"keccak256": "0xcf49cc7927aa17586dda12de47f17a99fedc429ebf98552a799b08d150fb0385",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://42ffdc417b88b9f2753b72dbab7b8ebabb465df6b2b911b5a83234eafa3b56aa",
+				"dweb:/ipfs/QmNnrxXjJCfPWdRBLYUNjNS1LFBXV1MFyrRQqBDCP6sgFc"
+			]
+		},
+		"contracts/MultiSigWallet/IForwarder.sol": {
+			"keccak256": "0x8cfa9363d477db77f13ec930d478130620f6b4d18e32ae3246ed14949797855a",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://1f371c46947e838a9c78c5065fe16c87cfc5ad1e841060ca2e3cc7e8b36a6470",
+				"dweb:/ipfs/QmQvY5AfwtdGUGJU3ZxwHzj3So9if2uNscwi6HUBAN11y4"
+			]
+		},
+		"contracts/MultiSigWallet/TransferHelper.sol": {
+			"keccak256": "0xca83b299012b8d8749a087de2336e350f95410440b658d63f2c685fa943da892",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://185d481d0acc84cd669948e488adc86b8f01648007be573fa360405b5b2cea86",
+				"dweb:/ipfs/QmRWBoS6jwJnTLU9yqE3Gj8uSWgrQDxyxDjzGiip57zLqq"
+			]
+		},
+		"contracts/MultiSigWallet/WalletFactory.sol": {
+			"keccak256": "0x5777cb0e3b135c47d77ea7eb1cce13977bf4dc5cdb0c7f28d53ba2aebf3ca8f0",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://595bef80f64e713b9714ba91d01bad6e4bfa2d6bf6de84febba4166512dfce20",
+				"dweb:/ipfs/QmZujVHpu16iQa6t6nusVeSD3emQWd3HpxXEqWZEkSsera"
+			]
+		},
+		"contracts/MultiSigWallet/WalletSimple.sol": {
+			"keccak256": "0x6d16a2fb437e6448149d01c3a277480192805fb8377508c1eb5fc69355bff4f9",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://ab272ebe1698a3f440598ee3781b95b96de7111ad225f5c3c07ce14dc5bef573",
+				"dweb:/ipfs/QmbjVB66aB41UpckYYUiJvyHj3aYncYXkjznNdQL1EPnEz"
+			]
+		}
+	},
+	"version": 1
+}

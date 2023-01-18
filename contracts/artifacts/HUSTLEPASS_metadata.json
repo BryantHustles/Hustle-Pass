@@ -9,16 +9,31 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_ipfs",
+						"name": "_uri",
 						"type": "string"
 					},
 					{
-						"internalType": "contract HachiWhitelist",
+						"internalType": "string",
+						"name": "_SIGNING_DOMAIN",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_SIGNATURE_VERSION",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_contractURI",
+						"type": "string"
+					},
+					{
+						"internalType": "contract SHWhitelist",
 						"name": "_whtlst",
 						"type": "address"
 					},
 					{
-						"internalType": "contract HachiWallet",
+						"internalType": "contract SHWallet",
 						"name": "_wllt",
 						"type": "address"
 					}
@@ -62,14 +77,14 @@
 					},
 					{
 						"indexed": true,
-						"internalType": "uint256[]",
+						"internalType": "uint256",
 						"name": "id",
-						"type": "uint256[]"
+						"type": "uint256"
 					},
 					{
 						"indexed": false,
 						"internalType": "uint256",
-						"name": "_value",
+						"name": "_amount",
 						"type": "uint256"
 					}
 				],
@@ -215,16 +230,31 @@
 				"type": "event"
 			},
 			{
-				"inputs": [],
-				"name": "addressMintLimit",
-				"outputs": [
+				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_recipients",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_passSelection",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_amounts",
+						"type": "uint256[]"
 					}
 				],
-				"stateMutability": "view",
+				"name": "airdrop",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -313,19 +343,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "metaDataReveal",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"components": [
@@ -335,9 +352,9 @@
 								"type": "address"
 							},
 							{
-								"internalType": "uint256[]",
-								"name": "amounts",
-								"type": "uint256[]"
+								"internalType": "uint256",
+								"name": "passSelection",
+								"type": "uint256"
 							},
 							{
 								"internalType": "bytes32[]",
@@ -350,40 +367,14 @@
 								"type": "bytes"
 							}
 						],
-						"internalType": "struct HUSTLEPASS.HachiTicket",
+						"internalType": "struct HUSTLEPASS.mintTicket",
 						"name": "_ticket",
 						"type": "tuple"
 					}
 				],
-				"name": "mintHachi",
+				"name": "mintPass",
 				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "mintLimit",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "mintPrice",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -407,6 +398,39 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ownerClaim",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ownerClaimLimit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ownerClaimed",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -448,13 +472,6 @@
 			{
 				"inputs": [],
 				"name": "renounceOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "revealMetaData",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -607,19 +624,6 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_uri",
-						"type": "string"
-					}
-				],
-				"name": "setGenericMeta",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
 						"name": "_newuri",
 						"type": "string"
 					}
@@ -677,45 +681,6 @@
 			{
 				"inputs": [],
 				"name": "unpause",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_limit",
-						"type": "uint256"
-					}
-				],
-				"name": "updateAddressMintLimit",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_limit",
-						"type": "uint256"
-					}
-				],
-				"name": "updateMintLimit",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_price",
-						"type": "uint256"
-					}
-				],
-				"name": "updateMintPrice",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -1003,27 +968,27 @@
 			]
 		},
 		"contracts/HustlePass.sol": {
-			"keccak256": "0x62336eabf22a44fb95736d3b76eaa0b06adc198b9a3438ceabdf1b04543eeb1d",
+			"keccak256": "0x79e76655d9bac06d6092bcf4073a8a50fdad903420f76c077d3a9afc49367653",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e98f39c26a2bd89cf476721c44185331d853068febe715c51b2c03c289dcd146",
-				"dweb:/ipfs/Qmb91gVAUsXc7UcLPstNGJn7ZuAhPw9Lm4JWUXF5pk5aPz"
+				"bzz-raw://85e00cd3cbadcd3f2837984c49efa1b34f5c6baf88a5f04b7352d70d0479fb1d",
+				"dweb:/ipfs/QmbBLMzYZBBzMn6E2SW6WgeLjpX971REs1wUwrPEyCX346"
 			]
 		},
 		"contracts/SHWallet.sol": {
-			"keccak256": "0x5427cdc5deacb92683179618876f27290c54943ffc3a80db8542e01bcdbccac0",
+			"keccak256": "0x5fda8041100645c6faa30d0e98a731eb679a4f5874e1b1e3004ea2d237719d95",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://34da4446931758bf4c7b2fffc75838ddd07d4d3bf9092ce70db87be321832ce4",
-				"dweb:/ipfs/QmZCWDtTeF8VoQAwqND9EKDZEasu3BWVNvxkbvTBaavH8k"
+				"bzz-raw://9c8295c82b1fce8d527ce6c4f90857749d18b74e1c7ed2820f7115af755f6abf",
+				"dweb:/ipfs/QmXhv6o76JFZeRc7v8kZoejPg52eBbsn4JZN8vyNRrX1MW"
 			]
 		},
 		"contracts/SHWhitelist.sol": {
-			"keccak256": "0x36246f892ca6d64191c0661e0bf9daf4c44a4ba7405fad29657ffde482129d34",
+			"keccak256": "0x7b50f7b06a3329b155494116810d252f55c93921c94ca77b1bfdabc75a60168d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3d44ce6323f9f16131965aa6a522fea0404d3c475065d28a8d171bea546e256d",
-				"dweb:/ipfs/QmUdbkwKrHM5oG4mVKKvLHFd1rNYoYsknxLvbb2d5N2MN8"
+				"bzz-raw://8ac622fae73aab322356d891144027edf4c9120acc4a8f3d4bf2e584beb2039a",
+				"dweb:/ipfs/QmbwjjjzC7oWAQVE6pZ9ZDY9KW5r36Yx8T5F9rC8rgnFQg"
 			]
 		}
 	},

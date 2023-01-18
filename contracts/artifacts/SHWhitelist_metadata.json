@@ -9,7 +9,12 @@
 				"inputs": [
 					{
 						"internalType": "bytes32",
-						"name": "_merkleRoot",
+						"name": "_merkleRootA",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_merkleRootB",
 						"type": "bytes32"
 					}
 				],
@@ -37,7 +42,20 @@
 			},
 			{
 				"inputs": [],
-				"name": "merkleRoot",
+				"name": "merkleRootA",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "merkleRootB",
 				"outputs": [
 					{
 						"internalType": "bytes32",
@@ -72,11 +90,24 @@
 				"inputs": [
 					{
 						"internalType": "bytes32",
-						"name": "_merkleRoot",
+						"name": "_merkleRootA",
 						"type": "bytes32"
 					}
 				],
-				"name": "setMerkleRoot",
+				"name": "setMerkleRootA",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_merkleRootB",
+						"type": "bytes32"
+					}
+				],
+				"name": "setMerkleRootB",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -107,7 +138,31 @@
 						"type": "address"
 					}
 				],
-				"name": "verifyWhitelist",
+				"name": "verifyWhitelistA",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32[]",
+						"name": "_merkleProof",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "address",
+						"name": "_signer",
+						"type": "address"
+					}
+				],
+				"name": "verifyWhitelistB",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -181,11 +236,11 @@
 			]
 		},
 		"contracts/SHWhitelist.sol": {
-			"keccak256": "0x7b50f7b06a3329b155494116810d252f55c93921c94ca77b1bfdabc75a60168d",
+			"keccak256": "0xe95cd8e8c14099193fbc074432d11968664892abce60d9a542e125e04ef2f114",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8ac622fae73aab322356d891144027edf4c9120acc4a8f3d4bf2e584beb2039a",
-				"dweb:/ipfs/QmbwjjjzC7oWAQVE6pZ9ZDY9KW5r36Yx8T5F9rC8rgnFQg"
+				"bzz-raw://a15bf84af60fcb7e4a021d2aa7a42e25b622f28f899e1ac90e0cd62fc632be73",
+				"dweb:/ipfs/QmV5BuQezym3vrh3FUzYTQMDY42oYY4t3kZ9ryLp5B55oQ"
 			]
 		}
 	},

@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.11;
+pragma solidity ^0.8.17;
 
-import "./SHWhitelist.sol";
-import "./SHWallet.sol";
 import "@openzeppelin/contracts/token/common/ERC2981.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
@@ -12,6 +10,8 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
+
+import "./SHWhitelist.sol";
 
 //HachiNFT
 contract HUSTLEPASS is
@@ -28,15 +28,18 @@ contract HUSTLEPASS is
     string public name = "The Side Hustler Pass";
     string public symbol = "TSHP";
 
-    bool public publicMint;
+    uint256 public ownerClaimLimitA = 50;
+    uint256 public ownerClaimLimitB = 100;
+    uint256 private tierACount = 0;
+    uint256 private tierALimit = 500;
+    uint256 private tierBCount = 0;
+    uint256 private tierBLimit = 1000;
 
-    uint256 public mintLimit = 100;
-    uint256 public ownerClaimLimit = 25;
-    uint256 public ownerClaimed = 0;
-    uint256 private SHPassACount = 0;
-    uint256 private SHPassBCount = 0;
+    bool public ownerClaimComplete = false;
 
     mapping(address => bool) private addressMinted;
+
+    address public SHWallet;
 
     struct mintTicket {
         address to;
@@ -46,7 +49,6 @@ contract HUSTLEPASS is
     }
 
     SHWhitelist whtlst;
-    SHWallet wllt;
 
     event Mint(address indexed to, uint256 indexed id, uint256 _amount);
 
@@ -55,18 +57,18 @@ contract HUSTLEPASS is
         string memory _SIGNING_DOMAIN,
         string memory _SIGNATURE_VERSION,
         string memory _contractURI,
-        SHWhitelist _whtlst,
-        SHWallet _wllt
+        address _SHWallet,
+        SHWhitelist _whtlst
     ) ERC1155(_uri) EIP712(_SIGNING_DOMAIN, _SIGNATURE_VERSION) {
         contractURI = _contractURI;
         whtlst = _whtlst;
-        wllt = _wllt;
-        setDefaultRoyalty(address(_wllt), 500);
+        SHWallet = _SHWallet;
+        setDefaultRoyalty(_SHWallet, 800);
         _pause();
     }
 
     receive() external payable {
-        payable(wllt).transfer(msg.value);
+        payable(SHWallet).transfer(msg.value);
     }
 
     function uri(uint256 _tokenId)
@@ -106,19 +108,20 @@ contract HUSTLEPASS is
         );
         require(addressMinted[_signer] == false, "Address Already Minted");
 
-        if (!publicMint) {
-            require(
-                whtlst.verifyWhitelist(_ticket.merkleProof, _signer),
-                "Not Whitelisted"
-            );
-        }
-
         if (_ticket.passSelection == 1) {
-            require(SHPassACount + 1 <= mintLimit, "Pass A Sold Out");
-            SHPassACount += 1;
+            require(
+                whtlst.verifyWhitelistA(_ticket.merkleProof, _signer),
+                "Not on Tier A Claim List"
+            );
+            require(tierACount + 1 <= tierALimit, "Pass A Sold Out");
+            tierACount += 1;
         } else {
-            require(SHPassBCount + 1 <= mintLimit, "Pass B Sold Out");
-            SHPassBCount += 1;
+            require(
+                whtlst.verifyWhitelistB(_ticket.merkleProof, _signer),
+                "Not on Tier B Claim List"
+            );
+            require(tierBCount + 1 <= tierBLimit, "Pass B Sold Out");
+            tierBCount += 1;
         }
 
         emit Mint(_ticket.to, _ticket.passSelection, 1);
@@ -158,39 +161,16 @@ contract HUSTLEPASS is
     }
 
     function ownerClaim() public onlyOwner {
-        require(addressMinted[msg.sender] == false, "Address Already Claimed");
-        require(ownerClaimed < ownerClaimLimit, "None to Claim");
+        require(!ownerClaimComplete , "Already claimed");
+        ownerClaimComplete = true;
 
-        addressMinted[msg.sender] = true;
-        ownerClaimed += ownerClaimLimit;
+        address _shWallet = address(SHWallet);
 
-        emit Mint(msg.sender, 1, ownerClaimLimit);
-        _mint(msg.sender, 1, ownerClaimLimit, "");
+        emit Mint(address(_shWallet), 1, ownerClaimLimitA);
+        _mint(_shWallet, 1, ownerClaimLimitA, "");
 
-        emit Mint(msg.sender, 2, ownerClaimLimit);
-        _mint(msg.sender, 2, ownerClaimLimit, "");
-    }
-
-    function airdrop(
-        address _from,
-        address[] calldata _recipients,
-        uint256[] calldata _passSelection,
-        uint256[] calldata _amounts
-    ) public onlyOwner {
-        require(
-            _recipients.length == _amounts.length &&
-                _recipients.length == _passSelection.length,
-            "Array lengths don't match"
-        );
-        for (uint256 i = 0; i < _recipients.length; i++) {
-            safeTransferFrom(
-                _from,
-                _recipients[i],
-                _passSelection[i],
-                _amounts[i],
-                ""
-            );
-        }
+        emit Mint(_shWallet, 2, ownerClaimLimitB);
+        _mint(_shWallet, 2, ownerClaimLimitB, "");
     }
 
     function setDefaultRoyalty(address receiver, uint96 feeNumerator)
@@ -198,15 +178,6 @@ contract HUSTLEPASS is
         onlyOwner
     {
         _setDefaultRoyalty(receiver, feeNumerator);
-    }
-
-    function updateMintLimit(uint256 _limit) public onlyOwner {
-        mintLimit = _limit;
-    }
-
-    function updatePublicMint(bool _publicMint) public onlyOwner {
-        require(_publicMint != publicMint, "input eqaul to state");
-        publicMint = _publicMint;
     }
 
     function pause() public onlyOwner {

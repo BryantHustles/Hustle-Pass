@@ -1,0 +1,222 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "tokenIds",
+						"type": "uint256[]"
+					}
+				],
+				"name": "batchFlushERC1155Tokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "flushERC1155Tokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "flushERC721Token",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					}
+				],
+				"name": "flushTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "autoFlush",
+						"type": "bool"
+					}
+				],
+				"name": "setAutoFlush1155",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "autoFlush",
+						"type": "bool"
+					}
+				],
+				"name": "setAutoFlush721",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"batchFlushERC1155Tokens(address,uint256[])": {
+					"params": {
+						"tokenContractAddress": "the address of the ERC1155 NFT contract",
+						"tokenIds": "The token ids of the nfts"
+					}
+				},
+				"flushERC1155Tokens(address,uint256)": {
+					"params": {
+						"tokenContractAddress": "the address of the ERC1155 NFT contract",
+						"tokenId": "The token id of the nft"
+					}
+				},
+				"flushERC721Token(address,uint256)": {
+					"params": {
+						"tokenContractAddress": "the address of the ERC721 NFT contract",
+						"tokenId": "The token id of the nft"
+					}
+				},
+				"flushTokens(address)": {
+					"params": {
+						"tokenContractAddress": "the address of the erc20 token contract"
+					}
+				},
+				"setAutoFlush1155(bool)": {
+					"params": {
+						"autoFlush": "whether to autoflush erc1155 tokens"
+					}
+				},
+				"setAutoFlush721(bool)": {
+					"params": {
+						"autoFlush": "whether to autoflush erc721 tokens"
+					}
+				},
+				"supportsInterface(bytes4)": {
+					"details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"batchFlushERC1155Tokens(address,uint256[])": {
+					"notice": "Execute a batch nft transfer from the forwarder to the parent address."
+				},
+				"flushERC1155Tokens(address,uint256)": {
+					"notice": "Execute a nft transfer from the forwarder to the parent address."
+				},
+				"flushERC721Token(address,uint256)": {
+					"notice": "Execute a nft transfer from the forwarder to the parent address"
+				},
+				"flushTokens(address)": {
+					"notice": "Execute a token transfer of the full balance from the forwarder token to the parent address"
+				},
+				"setAutoFlush1155(bool)": {
+					"notice": "Sets the autoflush1155 parameter."
+				},
+				"setAutoFlush721(bool)": {
+					"notice": "Sets the autoflush721 parameter."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MultiSigWallet/IForwarder.sol": "IForwarder"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+			]
+		},
+		"contracts/MultiSigWallet/IForwarder.sol": {
+			"keccak256": "0x8cfa9363d477db77f13ec930d478130620f6b4d18e32ae3246ed14949797855a",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://1f371c46947e838a9c78c5065fe16c87cfc5ad1e841060ca2e3cc7e8b36a6470",
+				"dweb:/ipfs/QmQvY5AfwtdGUGJU3ZxwHzj3So9if2uNscwi6HUBAN11y4"
+			]
+		}
+	},
+	"version": 1
+}

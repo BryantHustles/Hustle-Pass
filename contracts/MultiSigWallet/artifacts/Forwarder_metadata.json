@@ -1,0 +1,589 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "ForwarderDeposited",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "autoFlush1155",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "autoFlush721",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "tokenIds",
+						"type": "uint256[]"
+					}
+				],
+				"name": "batchFlushERC1155Tokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "target",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "callFromParent",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "flush",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "flushERC1155Tokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "flushERC721Token",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					}
+				],
+				"name": "flushTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_parentAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "_autoFlush721",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "_autoFlush1155",
+						"type": "bool"
+					}
+				],
+				"name": "init",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "ids",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "values",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC1155BatchReceived",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC1155Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC721Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "parentAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "autoFlush",
+						"type": "bool"
+					}
+				],
+				"name": "setAutoFlush1155",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "autoFlush",
+						"type": "bool"
+					}
+				],
+				"name": "setAutoFlush721",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"batchFlushERC1155Tokens(address,uint256[])": {
+					"params": {
+						"tokenContractAddress": "the address of the ERC1155 NFT contract",
+						"tokenIds": "The token ids of the nfts"
+					}
+				},
+				"flushERC1155Tokens(address,uint256)": {
+					"params": {
+						"tokenContractAddress": "the address of the ERC1155 NFT contract",
+						"tokenId": "The token id of the nft"
+					}
+				},
+				"flushERC721Token(address,uint256)": {
+					"params": {
+						"tokenContractAddress": "the address of the ERC721 NFT contract",
+						"tokenId": "The token id of the nft"
+					}
+				},
+				"flushTokens(address)": {
+					"params": {
+						"tokenContractAddress": "the address of the erc20 token contract"
+					}
+				},
+				"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)": {
+					"details": "Handles the receipt of a multiple ERC1155 token types. This function is called at the end of a `safeBatchTransferFrom` after the balances have been updated. NOTE: To accept the transfer(s), this must return `bytes4(keccak256(\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\"))` (i.e. 0xbc197c81, or its own function selector).",
+					"params": {
+						"data": "Additional data with no specified format",
+						"from": "The address which previously owned the token",
+						"ids": "An array containing ids of each token being transferred (order and length must match values array)",
+						"operator": "The address which initiated the batch transfer (i.e. msg.sender)",
+						"values": "An array containing amounts of each token being transferred (order and length must match ids array)"
+					},
+					"returns": {
+						"_0": "`bytes4(keccak256(\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\"))` if transfer is allowed"
+					}
+				},
+				"onERC1155Received(address,address,uint256,uint256,bytes)": {
+					"details": "Handles the receipt of a single ERC1155 token type. This function is called at the end of a `safeTransferFrom` after the balance has been updated. NOTE: To accept the transfer, this must return `bytes4(keccak256(\"onERC1155Received(address,address,uint256,uint256,bytes)\"))` (i.e. 0xf23a6e61, or its own function selector).",
+					"params": {
+						"data": "Additional data with no specified format",
+						"from": "The address which previously owned the token",
+						"id": "The ID of the token being transferred",
+						"operator": "The address which initiated the transfer (i.e. msg.sender)",
+						"value": "The amount of tokens being transferred"
+					},
+					"returns": {
+						"_0": "`bytes4(keccak256(\"onERC1155Received(address,address,uint256,uint256,bytes)\"))` if transfer is allowed"
+					}
+				},
+				"onERC721Received(address,address,uint256,bytes)": {
+					"params": {
+						"_from": "The address of the sender",
+						"_operator": "The address which called `safeTransferFrom` function",
+						"_tokenId": "The token id of the nft",
+						"data": "Additional data with no specified format, sent in call to `_to`"
+					}
+				},
+				"setAutoFlush1155(bool)": {
+					"params": {
+						"autoFlush": "whether to autoflush erc1155 tokens"
+					}
+				},
+				"setAutoFlush721(bool)": {
+					"params": {
+						"autoFlush": "whether to autoflush erc721 tokens"
+					}
+				},
+				"supportsInterface(bytes4)": {
+					"details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"batchFlushERC1155Tokens(address,uint256[])": {
+					"notice": "Execute a batch nft transfer from the forwarder to the parent address."
+				},
+				"flush()": {
+					"notice": "Flush the entire balance of the contract to the parent address."
+				},
+				"flushERC1155Tokens(address,uint256)": {
+					"notice": "Execute a nft transfer from the forwarder to the parent address."
+				},
+				"flushERC721Token(address,uint256)": {
+					"notice": "Execute a nft transfer from the forwarder to the parent address"
+				},
+				"flushTokens(address)": {
+					"notice": "Execute a token transfer of the full balance from the forwarder token to the parent address"
+				},
+				"init(address,bool,bool)": {
+					"notice": "Initialize the contract, and sets the destination address to that of the creator"
+				},
+				"onERC721Received(address,address,uint256,bytes)": {
+					"notice": "ERC721 standard callback function for when a ERC721 is transfered. The forwarder will send the nft to the base wallet once the nft contract invokes this method after transfering the nft."
+				},
+				"setAutoFlush1155(bool)": {
+					"notice": "Sets the autoflush1155 parameter."
+				},
+				"setAutoFlush721(bool)": {
+					"notice": "Sets the autoflush721 parameter."
+				}
+			},
+			"notice": "Contract that will forward any incoming Ether to the creator of the contract",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MultiSigWallet/Forwarder.sol": "Forwarder"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC1155/IERC1155.sol": {
+			"keccak256": "0x6392f2cfe3a5ee802227fe7a2dfd47096d881aec89bddd214b35c5b46d3cd941",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bd9c47a375639888e726a99da718890ba16d17d7ad9eacb0ccc892d46d1b3ee0",
+				"dweb:/ipfs/Qmb41W5RUjy2sWg49A2rMnxekSeEk6SvGyJL5tyCCSr7un"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol": {
+			"keccak256": "0xeb373f1fdc7b755c6a750123a9b9e3a8a02c1470042fd6505d875000a80bde0b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0e28648f994abf1d6bc345644a361cc0b7efa544f8bc0c8ec26011fed85a91ec",
+				"dweb:/ipfs/QmVVE7AiRjKaQYYji7TkjmTeVzGpNmms5eoxqTCfvvpj6D"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC1155/utils/ERC1155Receiver.sol": {
+			"keccak256": "0x3dd5e1a66a56f30302108a1da97d677a42b1daa60e503696b2bcbbf3e4c95bcb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0808de0ae4918c664643c885ca7fa6503e8ef2bd75609dfc85152c0128a3422d",
+				"dweb:/ipfs/QmNrhFC1XgBKuuxfahFeiwi1MCdu3FLNpHj2uStgmf4iJj"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+			"keccak256": "0xab28a56179c1db258c9bf5235b382698cb650debecb51b23d12be9e241374b68",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://daae589a9d6fa7e55f99f86c0a16796ca490f243fb3693632c3711c0646c1d56",
+				"dweb:/ipfs/QmR3zpd7wNw3rcUdekwiv6FYHJqksuTCXLVioTxu6Fbxk3"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+			"keccak256": "0xa82b58eca1ee256be466e536706850163d2ec7821945abd6b4778cfb3bee37da",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6e75cf83beb757b8855791088546b8337e9d4684e169400c20d44a515353b708",
+				"dweb:/ipfs/QmYvPafLfoquiDMEj7CKHtvbgHu7TJNPSVPSCjrtjV8HjV"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0xf96f969e24029d43d0df89e59d365f277021dac62b48e1c1e3ebe0acdd7f1ca1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ec772b45a624be516f1c81970caa8a2e144301e9d0921cbc1a2789fef39a1269",
+				"dweb:/ipfs/QmNyjwxCrGhQMyzLD93oUobJXVe9ceJvRvfXwbEtuxPiEj"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+			"keccak256": "0xd10975de010d89fd1c78dc5e8a9a7e7f496198085c151648f20cba166b32582b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fb0048dee081f6fffa5f74afc3fb328483c2a30504e94a0ddd2a5114d731ec4d",
+				"dweb:/ipfs/QmZptt1nmYoA5SgjwnSgWqgUSDgm4q52Yos3xhnMv3MV43"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+			]
+		},
+		"contracts/MultiSigWallet/ERC20Interface.sol": {
+			"keccak256": "0xcf49cc7927aa17586dda12de47f17a99fedc429ebf98552a799b08d150fb0385",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://42ffdc417b88b9f2753b72dbab7b8ebabb465df6b2b911b5a83234eafa3b56aa",
+				"dweb:/ipfs/QmNnrxXjJCfPWdRBLYUNjNS1LFBXV1MFyrRQqBDCP6sgFc"
+			]
+		},
+		"contracts/MultiSigWallet/Forwarder.sol": {
+			"keccak256": "0xa853caa194533354ab3dc9a92dcd12e7be97fe10a963d1aaa3e2ca6001be680b",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://b00d121a0bf6910a53d60c20fb87ad68d7a0722fb24add317e413e8f91030c79",
+				"dweb:/ipfs/QmdCT6dZCLMUiceauPsGggiV3Z5U2D4bET36misAyfw2X3"
+			]
+		},
+		"contracts/MultiSigWallet/IForwarder.sol": {
+			"keccak256": "0x8cfa9363d477db77f13ec930d478130620f6b4d18e32ae3246ed14949797855a",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://1f371c46947e838a9c78c5065fe16c87cfc5ad1e841060ca2e3cc7e8b36a6470",
+				"dweb:/ipfs/QmQvY5AfwtdGUGJU3ZxwHzj3So9if2uNscwi6HUBAN11y4"
+			]
+		},
+		"contracts/MultiSigWallet/TransferHelper.sol": {
+			"keccak256": "0xca83b299012b8d8749a087de2336e350f95410440b658d63f2c685fa943da892",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://185d481d0acc84cd669948e488adc86b8f01648007be573fa360405b5b2cea86",
+				"dweb:/ipfs/QmRWBoS6jwJnTLU9yqE3Gj8uSWgrQDxyxDjzGiip57zLqq"
+			]
+		}
+	},
+	"version": 1
+}

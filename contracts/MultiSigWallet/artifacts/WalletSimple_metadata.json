@@ -1,0 +1,875 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "msgSender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "otherSigner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "operation",
+						"type": "bytes32"
+					}
+				],
+				"name": "BatchTransacted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "BatchTransfer",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "Deposited",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "msgSender",
+						"type": "address"
+					}
+				],
+				"name": "SafeModeActivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "msgSender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "otherSigner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "operation",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "toAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "Transacted",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "activateSafeMode",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "forwarderAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "tokenIds",
+						"type": "uint256[]"
+					}
+				],
+				"name": "batchFlushERC1155ForwarderTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "forwarderAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "flushERC1155ForwarderTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "forwarderAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "flushERC721ForwarderTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "forwarderAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					}
+				],
+				"name": "flushForwarderTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNextSequenceId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "allowedSigners",
+						"type": "address[]"
+					}
+				],
+				"name": "init",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "initialized",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "signer",
+						"type": "address"
+					}
+				],
+				"name": "isSigner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "ids",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "values",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC1155BatchReceived",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC1155Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC721Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "safeMode",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "toAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expireTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sequenceId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "sendMultiSig",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "recipients",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "values",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expireTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sequenceId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "sendMultiSigBatch",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "toAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expireTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sequenceId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "sendMultiSigToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "forwarderAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "autoFlush",
+						"type": "bool"
+					}
+				],
+				"name": "setAutoFlush1155",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "forwarderAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "autoFlush",
+						"type": "bool"
+					}
+				],
+				"name": "setAutoFlush721",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "signers",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"batchFlushERC1155ForwarderTokens(address,address,uint256[])": {
+					"params": {
+						"forwarderAddress": "the address of the forwarder address to flush the tokens from",
+						"tokenContractAddress": "the address of the erc1155 token contract"
+					}
+				},
+				"flushERC1155ForwarderTokens(address,address,uint256)": {
+					"params": {
+						"forwarderAddress": "the address of the forwarder address to flush the tokens from",
+						"tokenContractAddress": "the address of the erc1155 token contract",
+						"tokenId": "the token id associated with the ERC1155"
+					}
+				},
+				"flushERC721ForwarderTokens(address,address,uint256)": {
+					"params": {
+						"forwarderAddress": "the address of the forwarder address to flush the tokens from",
+						"tokenContractAddress": "the address of the erc20 token contract"
+					}
+				},
+				"flushForwarderTokens(address,address)": {
+					"params": {
+						"forwarderAddress": "the address of the forwarder address to flush the tokens from",
+						"tokenContractAddress": "the address of the erc20 token contract"
+					}
+				},
+				"init(address[])": {
+					"params": {
+						"allowedSigners": "An array of signers on the wallet"
+					}
+				},
+				"isSigner(address)": {
+					"params": {
+						"signer": "address to check returns boolean indicating whether address is signer or not"
+					}
+				},
+				"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)": {
+					"details": "Handles the receipt of a multiple ERC1155 token types. This function is called at the end of a `safeBatchTransferFrom` after the balances have been updated. NOTE: To accept the transfer(s), this must return `bytes4(keccak256(\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\"))` (i.e. 0xbc197c81, or its own function selector).",
+					"params": {
+						"data": "Additional data with no specified format",
+						"from": "The address which previously owned the token",
+						"ids": "An array containing ids of each token being transferred (order and length must match values array)",
+						"operator": "The address which initiated the batch transfer (i.e. msg.sender)",
+						"values": "An array containing amounts of each token being transferred (order and length must match ids array)"
+					},
+					"returns": {
+						"_0": "`bytes4(keccak256(\"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\"))` if transfer is allowed"
+					}
+				},
+				"onERC1155Received(address,address,uint256,uint256,bytes)": {
+					"details": "Handles the receipt of a single ERC1155 token type. This function is called at the end of a `safeTransferFrom` after the balance has been updated. NOTE: To accept the transfer, this must return `bytes4(keccak256(\"onERC1155Received(address,address,uint256,uint256,bytes)\"))` (i.e. 0xf23a6e61, or its own function selector).",
+					"params": {
+						"data": "Additional data with no specified format",
+						"from": "The address which previously owned the token",
+						"id": "The ID of the token being transferred",
+						"operator": "The address which initiated the transfer (i.e. msg.sender)",
+						"value": "The amount of tokens being transferred"
+					},
+					"returns": {
+						"_0": "`bytes4(keccak256(\"onERC1155Received(address,address,uint256,uint256,bytes)\"))` if transfer is allowed"
+					}
+				},
+				"onERC721Received(address,address,uint256,bytes)": {
+					"params": {
+						"_data": "Additional data with no specified format, sent in call to `_to`",
+						"_from": "The address of the sender",
+						"_operator": "The address of the nft contract",
+						"_tokenId": "The token id of the nft"
+					}
+				},
+				"sendMultiSig(address,uint256,bytes,uint256,uint256,bytes)": {
+					"params": {
+						"data": "the data to send to the toAddress when invoking the transaction",
+						"expireTime": "the number of seconds since 1970 for which this transaction is valid",
+						"sequenceId": "the unique sequence id obtainable from getNextSequenceId",
+						"signature": "see Data Formats",
+						"toAddress": "the destination address to send an outgoing transaction",
+						"value": "the amount in Wei to be sent"
+					}
+				},
+				"sendMultiSigBatch(address[],uint256[],uint256,uint256,bytes)": {
+					"params": {
+						"expireTime": "the number of seconds since 1970 for which this transaction is valid",
+						"recipients": "The list of recipients to send to",
+						"sequenceId": "the unique sequence id obtainable from getNextSequenceId",
+						"signature": "see Data Formats",
+						"values": "The list of values to send to"
+					}
+				},
+				"sendMultiSigToken(address,uint256,address,uint256,uint256,bytes)": {
+					"params": {
+						"expireTime": "the number of seconds since 1970 for which this transaction is valid",
+						"sequenceId": "the unique sequence id obtainable from getNextSequenceId",
+						"signature": "see Data Formats",
+						"toAddress": "the destination address to send an outgoing transaction",
+						"tokenContractAddress": "the address of the erc20 token contract",
+						"value": "the amount in tokens to be sent"
+					}
+				},
+				"setAutoFlush1155(address,bool)": {
+					"params": {
+						"autoFlush": "whether to autoflush erc1155 tokens",
+						"forwarderAddress": "the address of the forwarder to toggle."
+					}
+				},
+				"setAutoFlush721(address,bool)": {
+					"params": {
+						"autoFlush": "whether to autoflush erc721 tokens",
+						"forwarderAddress": "the address of the forwarder to toggle."
+					}
+				},
+				"supportsInterface(bytes4)": {
+					"details": "See {IERC165-supportsInterface}."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"activateSafeMode()": {
+					"notice": "Irrevocably puts contract into safe mode. When in this mode, transactions may only be sent to signing addresses."
+				},
+				"batchFlushERC1155ForwarderTokens(address,address,uint256[])": {
+					"notice": "Execute a ERC1155 batch token flush from one of the forwarder addresses. This transfer needs only a single signature and can be done by any signer."
+				},
+				"flushERC1155ForwarderTokens(address,address,uint256)": {
+					"notice": "Execute a ERC1155 token flush from one of the forwarder addresses. This transfer needs only a single signature and can be done by any signer."
+				},
+				"flushERC721ForwarderTokens(address,address,uint256)": {
+					"notice": "Execute a ERC721 token flush from one of the forwarder addresses. This transfer needs only a single signature and can be done by any signer"
+				},
+				"flushForwarderTokens(address,address)": {
+					"notice": "Execute a token flush from one of the forwarder addresses. This transfer needs only a single signature and can be done by any signer"
+				},
+				"getNextSequenceId()": {
+					"notice": "Gets the next available sequence ID for signing when using executeAndConfirm returns the sequenceId one higher than the highest currently stored"
+				},
+				"init(address[])": {
+					"notice": "Set up a simple multi-sig wallet by specifying the signers allowed to be used on this wallet. 2 signers will be required to send a transaction from this wallet. Note: The sender is NOT automatically added to the list of signers. Signers CANNOT be changed once they are set"
+				},
+				"isSigner(address)": {
+					"notice": "Determine if an address is a signer on this wallet"
+				},
+				"onERC721Received(address,address,uint256,bytes)": {
+					"notice": "ERC721 standard callback function for when a ERC721 is transfered."
+				},
+				"sendMultiSig(address,uint256,bytes,uint256,uint256,bytes)": {
+					"notice": "Execute a multi-signature transaction from this wallet using 2 signers: one from msg.sender and the other from ecrecover. Sequence IDs are numbers starting from 1. They are used to prevent replay attacks and may not be repeated."
+				},
+				"sendMultiSigBatch(address[],uint256[],uint256,uint256,bytes)": {
+					"notice": "Execute a batched multi-signature transaction from this wallet using 2 signers: one from msg.sender and the other from ecrecover. Sequence IDs are numbers starting from 1. They are used to prevent replay attacks and may not be repeated. The recipients and values to send are encoded in two arrays, where for index i, recipients[i] will be sent values[i]."
+				},
+				"sendMultiSigToken(address,uint256,address,uint256,uint256,bytes)": {
+					"notice": "Execute a multi-signature token transfer from this wallet using 2 signers: one from msg.sender and the other from ecrecover. Sequence IDs are numbers starting from 1. They are used to prevent replay attacks and may not be repeated."
+				},
+				"setAutoFlush1155(address,bool)": {
+					"notice": "Sets the autoflush 721 parameter on the forwarder."
+				},
+				"setAutoFlush721(address,bool)": {
+					"notice": "Sets the autoflush 721 parameter on the forwarder."
+				}
+			},
+			"notice": "WalletSimple ============ Basic multi-signer wallet designed for use in a co-signing environment where 2 signatures are required to move funds. Typically used in a 2-of-3 signing configuration. Uses ecrecover to allow for 2 signatures in a single transaction. The first signature is created on the operation hash (see Data Formats) and passed to sendMultiSig/sendMultiSigToken The signer is determined by verifyMultiSig(). The second signature is created by the submitter of the transaction and determined by msg.signer. Data Formats ============ The signature is created with ethereumjs-util.ecsign(operationHash). Like the eth_sign RPC call, it packs the values as a 65-byte array of [r, s, v]. Unlike eth_sign, the message is not prefixed. The operationHash the result of keccak256(prefix, toAddress, value, data, expireTime). For ether transactions, `prefix` is \"ETHER\". For token transaction, `prefix` is \"ERC20\" and `data` is the tokenContractAddress.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MultiSigWallet/WalletSimple.sol": "WalletSimple"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol": {
+			"keccak256": "0xeb373f1fdc7b755c6a750123a9b9e3a8a02c1470042fd6505d875000a80bde0b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0e28648f994abf1d6bc345644a361cc0b7efa544f8bc0c8ec26011fed85a91ec",
+				"dweb:/ipfs/QmVVE7AiRjKaQYYji7TkjmTeVzGpNmms5eoxqTCfvvpj6D"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC1155/utils/ERC1155Receiver.sol": {
+			"keccak256": "0x3dd5e1a66a56f30302108a1da97d677a42b1daa60e503696b2bcbbf3e4c95bcb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0808de0ae4918c664643c885ca7fa6503e8ef2bd75609dfc85152c0128a3422d",
+				"dweb:/ipfs/QmNrhFC1XgBKuuxfahFeiwi1MCdu3FLNpHj2uStgmf4iJj"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+			"keccak256": "0xa82b58eca1ee256be466e536706850163d2ec7821945abd6b4778cfb3bee37da",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6e75cf83beb757b8855791088546b8337e9d4684e169400c20d44a515353b708",
+				"dweb:/ipfs/QmYvPafLfoquiDMEj7CKHtvbgHu7TJNPSVPSCjrtjV8HjV"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0xf96f969e24029d43d0df89e59d365f277021dac62b48e1c1e3ebe0acdd7f1ca1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ec772b45a624be516f1c81970caa8a2e144301e9d0921cbc1a2789fef39a1269",
+				"dweb:/ipfs/QmNyjwxCrGhQMyzLD93oUobJXVe9ceJvRvfXwbEtuxPiEj"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+			"keccak256": "0xd10975de010d89fd1c78dc5e8a9a7e7f496198085c151648f20cba166b32582b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fb0048dee081f6fffa5f74afc3fb328483c2a30504e94a0ddd2a5114d731ec4d",
+				"dweb:/ipfs/QmZptt1nmYoA5SgjwnSgWqgUSDgm4q52Yos3xhnMv3MV43"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+			]
+		},
+		"contracts/MultiSigWallet/ERC20Interface.sol": {
+			"keccak256": "0xcf49cc7927aa17586dda12de47f17a99fedc429ebf98552a799b08d150fb0385",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://42ffdc417b88b9f2753b72dbab7b8ebabb465df6b2b911b5a83234eafa3b56aa",
+				"dweb:/ipfs/QmNnrxXjJCfPWdRBLYUNjNS1LFBXV1MFyrRQqBDCP6sgFc"
+			]
+		},
+		"contracts/MultiSigWallet/IForwarder.sol": {
+			"keccak256": "0xf1822d48f053c3083a66dd2d77c77678d55a498ea265dfc32336c286c0ffb9ad",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://56e0e4f0156c0475e2a25ecdbcb7c62e7152e6f0f32ab376f58e4a1acd490761",
+				"dweb:/ipfs/QmfZHXQ6jNtTKYLctJeqxCo8pytro78ZRB4SfS99KkKWUC"
+			]
+		},
+		"contracts/MultiSigWallet/TransferHelper.sol": {
+			"keccak256": "0x5a8af6e267830e6f38b7e7d4a396546591df0f3028051e54115e4f67ce1449b4",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://0f0059a3675e614445b7df57d43ad6ec234b0c28b3a8ffde5c8eae7e282b2845",
+				"dweb:/ipfs/QmWogMYqoFApgqM9aT2bM7DwdECc7Q57nA8tDZcyCfP9m4"
+			]
+		},
+		"contracts/MultiSigWallet/WalletSimple.sol": {
+			"keccak256": "0x6d16a2fb437e6448149d01c3a277480192805fb8377508c1eb5fc69355bff4f9",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://ab272ebe1698a3f440598ee3781b95b96de7111ad225f5c3c07ce14dc5bef573",
+				"dweb:/ipfs/QmbjVB66aB41UpckYYUiJvyHj3aYncYXkjznNdQL1EPnEz"
+			]
+		}
+	},
+	"version": 1
+}

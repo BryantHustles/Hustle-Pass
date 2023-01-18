@@ -1,0 +1,385 @@
+{
+	"id": "fea4dcb9b1126d12dc61b0da8f920f77",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.10",
+	"solcLongVersion": "0.8.10+commit.fc410830",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/MultiSigWallet/ERC20Interface.sol": {
+				"content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity 0.8.10;\n\n/**\n * Contract that exposes the needed erc20 token functions\n */\n\nabstract contract ERC20Interface {\n  // Send _value amount of tokens to address _to\n  function transfer(address _to, uint256 _value)\n    public\n    virtual\n    returns (bool success);\n\n  // Get the account balance of another account with address _owner\n  function balanceOf(address _owner)\n    public\n    virtual\n    view\n    returns (uint256 balance);\n}\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"contracts/MultiSigWallet/ERC20Interface.sol": {
+				"ERC20Interface": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_owner",
+									"type": "address"
+								}
+							],
+							"name": "balanceOf",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "balance",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_to",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "_value",
+									"type": "uint256"
+								}
+							],
+							"name": "transfer",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "success",
+									"type": "bool"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"balanceOf(address)": "70a08231",
+							"transfer(address,uint256)": "a9059cbb"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contract that exposes the needed erc20 token functions\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/MultiSigWallet/ERC20Interface.sol\":\"ERC20Interface\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/MultiSigWallet/ERC20Interface.sol\":{\"keccak256\":\"0xcf49cc7927aa17586dda12de47f17a99fedc429ebf98552a799b08d150fb0385\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://42ffdc417b88b9f2753b72dbab7b8ebabb465df6b2b911b5a83234eafa3b56aa\",\"dweb:/ipfs/QmNnrxXjJCfPWdRBLYUNjNS1LFBXV1MFyrRQqBDCP6sgFc\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"notice": "Contract that exposes the needed erc20 token functions",
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"contracts/MultiSigWallet/ERC20Interface.sol": {
+				"ast": {
+					"absolutePath": "contracts/MultiSigWallet/ERC20Interface.sol",
+					"exportedSymbols": {
+						"ERC20Interface": [
+							19
+						]
+					},
+					"id": 20,
+					"license": "UNLICENSED",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"0.8",
+								".10"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "39:23:0"
+						},
+						{
+							"abstract": true,
+							"baseContracts": [],
+							"canonicalName": "ERC20Interface",
+							"contractDependencies": [],
+							"contractKind": "contract",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "64:65:0",
+								"text": " Contract that exposes the needed erc20 token functions"
+							},
+							"fullyImplemented": false,
+							"id": 19,
+							"linearizedBaseContracts": [
+								19
+							],
+							"name": "ERC20Interface",
+							"nameLocation": "149:14:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"functionSelector": "a9059cbb",
+									"id": 11,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "transfer",
+									"nameLocation": "226:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 7,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 4,
+												"mutability": "mutable",
+												"name": "_to",
+												"nameLocation": "243:3:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "235:11:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 3,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "235:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 6,
+												"mutability": "mutable",
+												"name": "_value",
+												"nameLocation": "256:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "248:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 5,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "248:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "234:29:0"
+									},
+									"returnParameters": {
+										"id": 10,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 9,
+												"mutability": "mutable",
+												"name": "success",
+												"nameLocation": "305:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "300:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 8,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "300:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "299:14:0"
+									},
+									"scope": 19,
+									"src": "217:97:0",
+									"stateMutability": "nonpayable",
+									"virtual": true,
+									"visibility": "public"
+								},
+								{
+									"functionSelector": "70a08231",
+									"id": 18,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "balanceOf",
+									"nameLocation": "395:9:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 14,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 13,
+												"mutability": "mutable",
+												"name": "_owner",
+												"nameLocation": "413:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 18,
+												"src": "405:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 12,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "405:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "404:16:0"
+									},
+									"returnParameters": {
+										"id": 17,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 16,
+												"mutability": "mutable",
+												"name": "balance",
+												"nameLocation": "474:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 18,
+												"src": "466:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 15,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "466:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "465:17:0"
+									},
+									"scope": 19,
+									"src": "386:97:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "public"
+								}
+							],
+							"scope": 20,
+							"src": "131:354:0",
+							"usedErrors": []
+						}
+					],
+					"src": "39:447:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

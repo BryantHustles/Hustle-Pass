@@ -1,0 +1,90 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "balance",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Contract that exposes the needed erc20 token functions",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MultiSigWallet/ERC20Interface.sol": "ERC20Interface"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/MultiSigWallet/ERC20Interface.sol": {
+			"keccak256": "0xcf49cc7927aa17586dda12de47f17a99fedc429ebf98552a799b08d150fb0385",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://42ffdc417b88b9f2753b72dbab7b8ebabb465df6b2b911b5a83234eafa3b56aa",
+				"dweb:/ipfs/QmNnrxXjJCfPWdRBLYUNjNS1LFBXV1MFyrRQqBDCP6sgFc"
+			]
+		}
+	},
+	"version": 1
+}

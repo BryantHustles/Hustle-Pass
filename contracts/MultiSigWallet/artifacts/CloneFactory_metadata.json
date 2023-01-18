@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MultiSigWallet/CloneFactory.sol": "CloneFactory"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/MultiSigWallet/CloneFactory.sol": {
+			"keccak256": "0xba66bc576e55235dc91c11df5d3ed2c5392b7855a882ca11483c0445db319463",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://88fc6b3230bd44b85f01f9ee1f046c9900fcf27bb2b67476cdf5c3a2e463206b",
+				"dweb:/ipfs/QmQ3q6M3w9vHHn5ik42Fz5kKTYvgCs1kNU81n5dZy9qxRm"
+			]
+		}
+	},
+	"version": 1
+}

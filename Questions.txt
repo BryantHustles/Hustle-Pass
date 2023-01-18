@@ -1,0 +1,21 @@
+
+ - Whitelist for passes?
+    - One whitelist or one for each pass?
+         - one for each pass
+
+ - Pay for higher tier pass, or both free. First come first serve?
+      - No paying
+      - 3 tiers
+         - Passes given based off of how early
+         - Passes are awarded to people
+         - Whitelist for each pass. Can claim online
+
+ - Pass naming, A and B? Colors? Gold?
+   - Tier A - 500
+      - Reserve - 50 for claiming to multi sig
+   - Tier B - 1000
+      Resereve 100 for claiming
+
+
+ - Payment splitter or multi Sig?
+   - Multi sig wallet
